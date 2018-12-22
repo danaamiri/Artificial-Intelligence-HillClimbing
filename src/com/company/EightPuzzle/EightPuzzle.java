@@ -12,7 +12,6 @@ public class EightPuzzle {
     private GameGenerator gameGenerator = new GameGenerator();
     public GameRules game = new GameRules();
     public EightPuzzle() {
-
     }
 
     public ArrayList<char[][]> getStates(){
