@@ -1,7 +1,7 @@
 package com.company.EightPuzzle;
 
 public class PuzzleHeuristic {
-    public int manhattanDistance(char[][] state,int ie, int je){
+    private int manhattanDistance(char[][] state,int ie, int je){
         int cost = 0;
         char tile = state[ie][je];
         switch (tile){
@@ -37,4 +37,17 @@ public class PuzzleHeuristic {
         int cost = 0;
         return cost;
     }
+
+    public int manhattanCost(char[][] state){
+        int cost = 0;
+        for(int i = 0;i<3;i++){
+            for(int j = 0;j<3;j++){
+                if(state[i][j]!='0') {
+                    cost += manhattanDistance(state, i, j);
+                }
+            }
+        }
+        return cost;
+    }
+
 }
