@@ -3,70 +3,64 @@ package com.company.EightPuzzle;
 import java.util.ArrayList;
 
 public class GameRules {
-    public boolean checkMoves(char[][] state, int move, int i,int j){
-        boolean ok = false;
-        switch (move){
-            case 1:
-                if(i != 0){
-                    ok = true;
-                }
-                break;
-            case 2:
-                if(j != 2){
-                    ok = true;
-                }
-                break;
-            case 3:
-                if(i != 2){
-                    ok = true;
-                }
-                break;
-            case 4:
-                if(j != 0){
-                    ok = true;
-                }
-                break;
-        }
+    private Moves moves = new Moves();
+    private Tools tools = new Tools();
+    private PuzzleHeuristic heuristic = new PuzzleHeuristic();
+    private GameGenerator gameGenerator = new GameGenerator();
 
-        return ok;
-    }
 
     public ArrayList<ArrayList> getSuccessors(char[][] state){
         ArrayList<ArrayList> successors = new ArrayList<>();
-
         char move = ' ';
-        int[] dest = new int[2];
-        int[] st = getEmpty(state);
+        int[] st = tools.getEmpty(state);
         int ie = st[0];
         int je = st[1];
+        int moveCode = 0;
         for(int i =1;i<=4;i++){
             ArrayList temp  = new ArrayList();
-            if(checkMoves(state,i,ie,je)){
+            if(tools.checkMoves(state,i,ie,je)){
                 switch (i){
                     case 1:
                         move = 'U';
-                        dest[0] = ie-1;
-                        dest[1] = je;
+                        moveCode = 1;
                         break;
                     case 2:
                         move = 'R';
-                        dest[0] = ie;
-                        dest[1] = je+1;
+                        moveCode = 2;
                         break;
                     case 3:
                         move = 'D';
-                        dest[0] = ie+1;
-                        dest[1] = je;
+                        moveCode = 3;
                         break;
                     case 4:
                         move = 'L';
-                        dest[0] = ie;
-                        dest[1] = je-1;
+                        moveCode = 4;
                         break;
 
                 }
+                switch (i){
+
+                    case 1:
+                        temp.add(moves.up(state,st));
+
+                        break;
+                    case 2:
+                        temp.add(moves.right(state,st));
+
+                        break;
+                    case 3:
+                        temp.add(moves.down(state,st));
+
+                        break;
+                    case 4:
+                        temp.add(moves.left(state,st));
+
+                        break;
+                }
+
+                temp.add(moveCode);
                 temp.add(move);
-                temp.add(dest);
+                temp.add(heuristic.manhattanCost((char[][]) temp.get(0)));
                 successors.add(temp);
             }
 
@@ -74,21 +68,22 @@ public class GameRules {
         return successors;
     }
 
-    private int[] getEmpty(char[][] state){
-        int[] emp = new int[2];
-        boolean found = false;
-        for(int i = 0;i<3;i++){
-            for(int j = 0;j<3;j++){
-                if(state[i][j]=='0'){
-                    emp[0]= i;
-                    emp[1]= j;
-                    found = true;
-                }
-            }
-            if(found){
-                break;
+
+
+    public ArrayList getBestNeighbor(ArrayList<ArrayList> states){
+        ArrayList state;
+        int cost = 1000;
+        int index = 0;
+        for(int i=0;i<states.size();i++){
+            int tempCost = (int) states.get(i).get(3);
+            if(tempCost<cost){
+                cost = tempCost;
+                index = i ;
             }
         }
-        return emp;
+        state = states.get(index);
+        return state;
+
     }
+
 }
