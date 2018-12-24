@@ -3,93 +3,86 @@ package com.company.EightQueens;
 import java.util.ArrayList;
 
 public class GameRules {
-
-    public ArrayList<ArrayList> getSuccessors(char[][] state,int ie,int je){
+    Tools tools =  new Tools();
+    Moves moves = new Moves();
+    QueensHeuristic heuristic = new QueensHeuristic();
+    GameGenerator gameGenerator = new GameGenerator();
+    public ArrayList<ArrayList> getSuccessors(char[][] state){
+        char[][] temp = tools.copyState(state);
+        ArrayList<int[]> queens = tools.findQueens(temp);
         ArrayList<ArrayList> successors = new ArrayList<>();
-        ArrayList temp = new ArrayList();
-        for(int i = 1;i<=8;i++){
-            String move = " ";
-            if(checkMove(state, ie, je, i)){
-                switch (i){
-                    case 1:
-                        move = "n";
-                        break;
-                    case 2:
-                        move = "e";
-                        break;
-                    case 3:
-                        move = "s";
-                        break;
-                    case 4:
-                        move = "w";
-                        break;
-                    case 5:
-                        move = "ne";
-                        break;
-                    case 6:
-                        move = "se";
-                        break;
-                    case 7:
-                        move = "sw";
-                        break;
-                    case 8:
-                        move = "nw";
-                        break;
+        for(int k=0;k<8;k++){
+            int[] queenTemp = queens.get(k);
+            int ie = queenTemp[0];
+            int je = queenTemp[1];
+            for(int i=1;i<=8;i++){
+                temp = tools.copyState(state);
+                int move;
+                ArrayList tempState = new ArrayList();
+                if(tools.checkMove(temp,ie,je,i)){
+                    move = i;
+                    switch (i){
+                        case 1:
+                            tempState.add(moves.n(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 2:
+                            tempState.add(moves.e(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 3:
+                            tempState.add(moves.s(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 4:
+                            tempState.add(moves.w(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 5:
+                            tempState.add(moves.ne(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 6:
+                            tempState.add(moves.se(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 7:
+                            tempState.add(moves.sw(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                        case 8:
+                            tempState.add(moves.nw(temp,ie,je));
+                            tempState.add(move);
+                            tempState.add(heuristic.attackingPairs((char[][]) tempState.get(0)));
+                            break;
+                    }
+                    successors.add(tempState);
                 }
-                temp.add(move);
-
             }
 
-
         }
-        successors.add(temp);
         return successors;
     }
 
-    public boolean checkMove(char[][] state, int ie, int je, int move){
-        boolean ok = false;
-        switch (move){
-            case 1:
-                if(ie != 0 && state[ie-1][je] != '1'){
-                    ok = true;
-                }
-                break;
-            case 2:
-                if(je != 7 && state[ie][je+1] != '1'){
-                    ok = true;
-                }
-                break;
-            case 3:
-                if(ie != 7 && state[ie+1][je] != '1'){
-                    ok = true;
-                }
-                break;
-            case 4:
-                if(je != 0 && state[ie][je-1] != '1'){
-                    ok = true;
-                }
-                break;
-            case 5:
-                if(ie != 0 && je != 7 && state[ie-1][je+1] != '1'){
-                    ok = true;
-                }
-                break;
-            case 6:
-                if(ie != 7 && je != 7 && state[ie+1][je+1] != '1'){
-                    ok = true;
-                }
-                break;
-            case 7:
-                if(ie != 7 && je != 0 && state[ie+1][je-1] != '1'){
-                    ok = true;
-                }
-                break;
-            case 8:
-                if(ie != 0 && je != 0 && state[ie-1][je-1] != '1'){
-                    ok = true;
-                }
-                break;
+    public ArrayList getBestSuccessor(ArrayList<ArrayList> successors){
+        ArrayList state;
+        int cost = 1000;
+        int index = 0;
+        for(int i=0;i<successors.size();i++){
+            int tempCost = (int) successors.get(i).get(2);
+            if(tempCost<cost){
+                cost = tempCost;
+                index = i;
+            }
         }
-        return ok;
+        state = successors.get(index);
+        return state;
     }
 }

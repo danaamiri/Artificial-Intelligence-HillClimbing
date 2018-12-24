@@ -3,24 +3,15 @@ package com.company.EightQueens;
 import java.util.ArrayList;
 
 public class QueensHeuristic {
-     int attackingPairs(char[][] state){
+    Tools tools = new Tools();
+    GameGenerator gameGenerator = new GameGenerator();
+     public int attackingPairs(char[][] state){
         int cost = 0;
-        char[][] temp = state;
-        ArrayList<int[]> queens = new ArrayList<>();
-        for(int i = 0;i<8;i++){
-            int[] queen = new int[2];
-            for(int j = 0;j<8;j++){
-                if(temp[i][j] == '1'){
-                    queen[0] = i;
-                    queen[1] = j;
-                    temp[i][j] = '0';
-                    queens.add(queen);
-                }
-            }
-        }
-
+        char[][] temp = tools.copyState(state);
+        ArrayList<int[]> queens = tools.findQueens(temp);
         for(int i = 0;i<8;i++){
             int[] queen = queens.get(0);
+            queens.remove(0);
             for(int j=0;j<queens.size()-1;j++){
                 if(i == j){
                     continue;
@@ -33,9 +24,9 @@ public class QueensHeuristic {
                     }
                 }
             }
-            queens.remove(0);
+
         }
-        return ++cost;
+        return cost;
     }
 
 /*
