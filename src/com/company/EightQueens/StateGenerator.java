@@ -9,29 +9,30 @@ public class StateGenerator {
     public StateGenerator() {
     }
 
-    public ArrayList<char[][]> generateStates() {
-        ArrayList<char[][]> states = new ArrayList();
+    public char[][] generateStates() {
 
-        for(int k = 0; k < 12; ++k) {
-            char[][] temp = new char[][]{{'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}, {'0', '0', '0', '0', '0', '0', '0', '0'}};
+        char[][] state = new char[][]{  {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
+                                        {'0', '0', '0', '0', '0', '0', '0', '0'}};
 
-            for(int i = 0; i < 8; ++i) {
-                boolean isOk = false;
+        for(int i = 0; i < 8; ++i) {
+            boolean isOk = false;
 
-                while(!isOk) {
-                    int x = this.randomQueenPosition();
-                    int y = this.randomQueenPosition();
-                    if (temp[x][y] == '0') {
-                        temp[x][y] = '1';
-                        isOk = true;
-                    }
+            while(!isOk) {
+                int x = this.randomQueenPosition();
+                int y = this.randomQueenPosition();
+                if (state[x][y] == '0') {
+                    state[x][y] = '1';
+                    isOk = true;
                 }
             }
-
-            states.add(temp);
         }
-
-        return states;
+        return state;
     }
 
     private int randomQueenPosition() {

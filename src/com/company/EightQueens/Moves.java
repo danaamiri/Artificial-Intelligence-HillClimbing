@@ -1,10 +1,11 @@
 package com.company.EightQueens;
 
 public class Moves {
-    private GameRules gameRules = new GameRules();
+    Tools tools =  new Tools();
+
     public char[][] n(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,1)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,1)){
             temp[ie-1][je] = '1';
             temp[ie][je] = '0';
         }else{
@@ -13,8 +14,8 @@ public class Moves {
         return temp;
     }
     public char[][] e(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,2)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,2)){
             temp[ie][je+1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -24,8 +25,8 @@ public class Moves {
     }
 
     public char[][] s(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,3)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,3)){
             temp[ie+1][je] = '1';
             temp[ie][je] = '0';
         }else{
@@ -36,8 +37,8 @@ public class Moves {
 
 
     public char[][] w(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,4)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,4)){
             temp[ie][je-1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -47,8 +48,8 @@ public class Moves {
     }
 
     public char[][] ne(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,5)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,5)){
             temp[ie-1][je+1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -58,8 +59,8 @@ public class Moves {
     }
 
     public char[][] se(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,6)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,6)){
             temp[ie+1][je+1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -69,8 +70,8 @@ public class Moves {
     }
 
     public char[][] sw(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,7)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,7)){
             temp[ie+1][je-1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -80,8 +81,8 @@ public class Moves {
     }
 
     public char[][] nw(char[][] state, int ie, int je){
-        char[][] temp = state;
-        if(gameRules.checkMove(state,ie,je,8)){
+        char[][] temp = tools.copyState(state);
+        if(tools.checkMove(state,ie,je,8)){
             temp[ie-1][je-1] = '1';
             temp[ie][je] = '0';
         }else{
@@ -89,4 +90,6 @@ public class Moves {
         }
         return temp;
     }
+
+
 }

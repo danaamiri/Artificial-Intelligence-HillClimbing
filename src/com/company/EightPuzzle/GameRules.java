@@ -78,7 +78,7 @@ public class GameRules {
             int tempCost = (int) states.get(i).get(3);
             if(tempCost<cost){
                 cost = tempCost;
-                index = i ;
+                index = i;
             }
         }
         state = states.get(index);
