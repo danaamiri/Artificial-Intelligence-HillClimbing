@@ -48,7 +48,7 @@ Here is a exmaple of a Run:
   Problem             : 8Queens                          
   Steepest Ascent     : %9.000000                             
   Steepest Ascent Cost:   3.888889                             
-  First Choice        : %9.000000                             
+  First Choice        : %10.600000                             
   First Choice Cost   :   6.000000                             
   Simulated Annealing : %100.000000                             
   SA Cost             :   1739.849976                             
