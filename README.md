@@ -3,25 +3,43 @@ Implementation of Hill Climbing Algorithm for 8Puzzle & 8Queens Problem
 
 ##Description
 
-This code contains 4 type of Local Search Algorithm implementation:
+This code contains 4 types of Local Search Algorithm implementation:
 
 - Steepest Ascent Hill Climbing
 - First Choice Hill Climbing
 - Random-Restart Hill Climbing
 - Simulated Annealing
 
-This code shows statistics of running algorithm in console and if you want, you can also show states in terminal with below code:
+This code shows statistics of running algorithm in the console and if you want, you can also show states in the terminal with below code:
     
 ```
 GameGenerator gamegenerator = new GameGenerator();
-gamegenerator.printGame(__YOUR_STATE__);
+System.out.println(gamegenerator.printGame(__YOUR_STATE__));
+
+-------------
+| 5 | 8 | 1 |
+| 2 |   | 4 |
+| 3 | 7 | 6 |
+-------------
+
+
+-----------------
+| | | | | | | | |
+| | | | | | | |Q|
+| | |Q|Q| | | | |
+| |Q|Q| | | |Q| |
+| | | | | | | | |
+| | | | | | | |Q|
+| | | | | |Q| | |
+| | | | | | | | |
+-----------------
 ```     
     
     
    
-In addition if you have Matlab installed on your system, after running the program you can run the run file in logfiles directory from root to see Cost Per Try of each algorithm
+In addition, if you have Matlab installed on your system, after running the program you can run the run file in logfiles directory from root to see Cost Per Try of each algorithm
     
-Here is a exmaple of a Run: 
+Here is an example of a Run: 
 
 - Logs:
     
