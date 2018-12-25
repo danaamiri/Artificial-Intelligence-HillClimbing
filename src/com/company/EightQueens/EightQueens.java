@@ -7,7 +7,7 @@ import com.company.EightQueens.StateGenerator;
 import java.util.ArrayList;
 
 public class EightQueens {
-    private GameGenerator gameGenerator = new GameGenerator();
+    public GameGenerator gameGenerator = new GameGenerator();
     private StateGenerator stateGenerator = new StateGenerator();
     public GameRules game = new GameRules();
     public Moves moves = new Moves();
