@@ -1,6 +1,7 @@
 package com.company.EightQueens;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameRules {
     Tools tools =  new Tools();
@@ -85,4 +86,18 @@ public class GameRules {
         state = successors.get(index);
         return state;
     }
+
+    public ArrayList moveOneStep(ArrayList<ArrayList> states ,int index){
+        return states.get(index);
+    }
+
+    public ArrayList randomMove(char[][] state){
+        ArrayList<ArrayList> successors = getSuccessors(state);
+        Random rnd = new Random();
+
+        int choice = rnd.nextInt(successors.size());
+        return successors.get(choice);
+    }
+
+
 }
