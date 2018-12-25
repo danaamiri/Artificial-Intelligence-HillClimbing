@@ -13,6 +13,7 @@ public class Tools {
         }
         return temp;
     }
+    
 
     public ArrayList<int[]> findQueens(char[][] state){
         ArrayList<int[]> queens = new ArrayList<>();
