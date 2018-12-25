@@ -20,6 +20,7 @@ public class HillClimbing {
     }
 
     public ArrayList hillClimbingSteepestAscent(EightPuzzle problem,char[][] initialState){
+        System.out.println(gameGenerator.printGame(initialState));
         Node current = new Node(initialState,-1,problem.heuristic.manhattanCost(initialState));
         Node neighbor;
         ArrayList neighborTemp;
@@ -40,6 +41,7 @@ public class HillClimbing {
         }
     }
     public ArrayList hillClimbingSteepestAscent(EightQueens problem,char[][] initialState){
+        System.out.println(gameGenerator.printGame(initialState));
         Node current = new Node(initialState,-1,problem.heuristic.attackingPairs(initialState));
         Node neighbor;
         ArrayList neighborTemp;
