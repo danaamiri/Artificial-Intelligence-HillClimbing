@@ -8,10 +8,10 @@ public class GameGenerator {
         String generatedGame = "";
         generatedGame = generatedGame + "-----------------\n";
 
-        for(int i = 0; i < 8; ++i) {
+        for (int i = 0; i < 8; ++i) {
             generatedGame = generatedGame + "|";
 
-            for(int j = 0; j < 8; ++j) {
+            for (int j = 0; j < 8; ++j) {
                 if (game[i][j] != '1') {
                     generatedGame = generatedGame + " ";
                 } else {

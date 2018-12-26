@@ -4,26 +4,24 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class StateGenerator {
-    private GameGenerator gameGenerator = new GameGenerator();
 
-    public StateGenerator() {
-    }
 
     public char[][] generateStates() {
 
-        char[][] state = new char[][]{  {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'},
-                                        {'0', '0', '0', '0', '0', '0', '0', '0'}};
+        char[][] state = new char[][]{
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'},
+                {'0', '0', '0', '0', '0', '0', '0', '0'}};
 
-        for(int i = 0; i < 8; ++i) {
+        for (int i = 0; i < 8; ++i) {
             boolean isOk = false;
 
-            while(!isOk) {
+            while (!isOk) {
                 int x = this.randomQueenPosition();
                 int y = this.randomQueenPosition();
                 if (state[x][y] == '0') {

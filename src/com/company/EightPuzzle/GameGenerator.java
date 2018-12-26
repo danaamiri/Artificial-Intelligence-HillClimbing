@@ -5,10 +5,10 @@ public class GameGenerator {
         String generatedGame = "";
         generatedGame = generatedGame + "-------------\n";
 
-        for(int i = 0; i < 3; ++i) {
+        for (int i = 0; i < 3; ++i) {
             generatedGame = generatedGame + "| ";
 
-            for(int j = 0; j < 3; ++j) {
+            for (int j = 0; j < 3; ++j) {
                 if (game[i][j] != '0') {
                     generatedGame = generatedGame + game[i][j];
                 } else {

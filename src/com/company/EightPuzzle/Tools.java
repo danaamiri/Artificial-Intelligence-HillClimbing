@@ -1,27 +1,27 @@
 package com.company.EightPuzzle;
 
 public class Tools {
-    int[] getEmpty(char[][] state){
+    int[] getEmpty(char[][] state) {
         int[] emp = new int[2];
         boolean found = false;
-        for(int i = 0;i<3;i++){
-            for(int j = 0;j<3;j++){
-                if(state[i][j]=='0'){
-                    emp[0]= i;
-                    emp[1]= j;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (state[i][j] == '0') {
+                    emp[0] = i;
+                    emp[1] = j;
                     found = true;
                 }
             }
-            if(found){
+            if (found) {
                 break;
             }
         }
         return emp;
     }
 
-    public boolean checkMoves(char[][] state, int move, int i,int j){
+    public boolean checkMoves(char[][] state, int move, int i, int j) {
         boolean ok = false;
-        if(state[i][j]=='0') {
+        if (state[i][j] == '0') {
             switch (move) {
                 case 1:
                     if (i != 0) {
