@@ -32,10 +32,11 @@ public class LogFile {
     }
 
     ;
-    public void writeln(String address, String input){
+
+    public void writeln(String address, String input) {
 
         try {
-            switch (address){
+            switch (address) {
                 case "logfiles/steepestAscent8Puzzle.m":
                     outfilest.write(input);
                     break;

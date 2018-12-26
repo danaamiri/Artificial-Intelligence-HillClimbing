@@ -9,8 +9,6 @@ public class Main {
     public static void main(String[] args) {
         EightPuzzle eightPuzzle = new EightPuzzle();
         EightQueens eightQueens = new EightQueens();
-        HillClimbing hillClimbing = new HillClimbing(eightPuzzle,eightQueens);
-
-
+        HillClimbing hillClimbing = new HillClimbing(eightPuzzle, eightQueens);
     }
 }
